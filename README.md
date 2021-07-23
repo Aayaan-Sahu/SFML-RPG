@@ -7,6 +7,6 @@
 * colored module for python3 - Install -> pip3 install colored
 
 ## Build Instructions
-Clone the repo: git clone https://github.com/Aayaan-Sahu/SFML-RPG
-Build the executable: make build
-Run the executable: bin/Application
+1. Clone the repo: git clone https://github.com/Aayaan-Sahu/SFML-RPG
+2. Build the executable: make build
+3. Run the executable: bin/Application
