@@ -16,7 +16,7 @@
 3. `source .bashrc` / `source .zshrc`
 
 ## Build Instructions
-1. Clone the repo: `git clone https://github.com/Aayaan-Sahu/SFML-RPG`
+1. Clone the repo: `git clone https://github.com/Aayaan-Sahu/SFML-RPG.git`
 2. Build the executable: `make build`
 3. Run the executable: `bin/Application`
 
