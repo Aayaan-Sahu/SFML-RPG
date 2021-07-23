@@ -11,7 +11,8 @@
 
 ## Setup SFML - Mac
 1. `brew install sfml`
-2. In your `.bashrc` / `.zshrc`: `export CPLUS_INCLUDE_PATH=/usr/local/Cellar/sfml/2.5.1_1/include/:$CPLUS_INCLUDE_PATH`
+2. In your `.bashrc` / `.zshrc`:
+	* `export CPLUS_INCLUDE_PATH=/usr/local/Cellar/sfml/2.5.1_1/include/:$CPLUS_INCLUDE_PATH`
 3. `source .bashrc` / `source .zshrc`
 
 ## Build Instructions
