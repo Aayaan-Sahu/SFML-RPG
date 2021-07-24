@@ -13,7 +13,7 @@ INCLUDE = "include"
 OBJ = "obj"
 APP_NAME = "Application"
 
-SFML_COMPILE_FLAGS = "-lsfml-graphics -lsfml-window -lsfml-system"
+SFML_COMPILE_FLAGS = "-lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio"
 
 CFLAGS = "-O2 " + SFML_COMPILE_FLAGS
 
