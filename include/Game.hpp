@@ -11,7 +11,7 @@
 #define BASE_HEIGHT 				600
 #define BASE_FRAME_RATE_LIMIT 		120
 #define BASE_VERTICAL_SYNC_ENABLED 	false
-#define BASE_TITLE 					"Explorer"
+#define BASE_TITLE 					"None"
 
 class Game {
 
