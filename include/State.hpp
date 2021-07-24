@@ -7,6 +7,8 @@
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 
+#include <map>
+#include <stack>
 #include <vector>
 
 class State {

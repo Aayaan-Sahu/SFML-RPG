@@ -7,6 +7,9 @@
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "./State.hpp"
+#include "./States/GameState.hpp"
+
 #define BASE_WIDTH 					800
 #define BASE_HEIGHT 				600
 #define BASE_FRAME_RATE_LIMIT 		120
@@ -47,6 +50,9 @@ class Game {
 		// Delta time
 		sf::Clock deltaTimeClock;
 		float deltaTime;
+
+		// State management
+		std::stack<State*> state;
 
 };
 

@@ -13,9 +13,6 @@ void Game::initWindow() {
 
 	this->WINDOW->setFramerateLimit(this->FRAME_RATE_LIMIT);
 	this->WINDOW->setVerticalSyncEnabled(this->VERTICAL_SYNC_ENABLED);
-
-	std::cout << "Frame rate limit: " << this->FRAME_RATE_LIMIT << "\n";
-	std::cout << "Vertical sync enabled: " << this->VERTICAL_SYNC_ENABLED << "\n";
 }
 
 void Game::initVariables() {
