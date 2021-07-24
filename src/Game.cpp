@@ -1,5 +1,7 @@
 #include "../include/Game.hpp"
 
+#include "../include/States/GameState.hpp"
+
 #include <fstream>
 #include <iostream>
 
@@ -45,15 +47,32 @@ void Game::initVariables() {
 	fin.close();
 }
 
+void Game::initStates() {
+	this->states.push(new GameState(this->WINDOW));
+}
+
 /* Constructor / Destructor */
 Game::Game() {
 	// Initialize variables before initializing window
 	this->initVariables();
+
+	// Initialize window
 	this->initWindow();
+
+	// Initialize states
+	this->initStates();
 }
 
 Game::~Game() {
+	/* Free up memory */
 	delete this->WINDOW;
+
+	while (this->states.empty() == false) {
+		// First delete the contents of the states
+		delete this->states.top();
+		// Then pop the actual state
+		this->states.pop();
+	}
 }
 
 /* Functions */
@@ -75,17 +94,28 @@ void Game::updateSFMLEvents() {
 
 void Game::update() {
 	this->updateSFMLEvents();
+
+	// Call the update function for the top state in the states stack
+	if (this->states.empty() == false) {
+		this->states.top()->update(this->deltaTime);
+	}
 }
 
 void Game::render() {
 	// Clear the screen with a color
 	this->WINDOW->clear(sf::Color(51, 51, 51, 100));
 
+	// Call the render function for the top state in the states stack
+	if (this->states.empty() == false) {
+		this->states.top()->render(this->WINDOW);
+	}
+
 	// Render everything on the back buffer
 	this->WINDOW->display();
 }
 
 void Game::run() {
+	/* Game loop */
 	while (this->WINDOW->isOpen()) {
 		this->updateDeltaTime();
 		this->update();

@@ -9,12 +9,13 @@ class GameState : public State {
 
 	public:
 		/* Construct / Destructor */
-		GameState();
+		GameState(sf::RenderWindow* window);
 		~GameState();
 
 		/* Functions */
-		void update();
-		void render();
+		void endState();
+		void update(const float deltaTime);
+		void render(sf::RenderTarget* target=nullptr);
 
 	private:
 

@@ -15,16 +15,18 @@ class State {
 
 	private:
 		/* Variables */
+		sf::RenderWindow* window;
 		std::vector<sf::Texture*> textures;
 
 	public:
 		/* Constructor / Destructor */
-		State();
+		State(sf::RenderWindow* window);
 		virtual ~State();
 
 		/* Functions */
-		virtual void update() = 0;
-		virtual void render() = 0;
+		virtual void endState() = 0;
+		virtual void update(const float deltaTime) = 0;
+		virtual void render(sf::RenderTarget* target=nullptr) = 0;
 
 	private:
 

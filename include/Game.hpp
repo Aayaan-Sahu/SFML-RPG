@@ -8,7 +8,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "./State.hpp"
-#include "./States/GameState.hpp"
 
 #define BASE_WIDTH 					800
 #define BASE_HEIGHT 				600
@@ -22,6 +21,7 @@ class Game {
 		/* Initializer Functions */
 		void initVariables();
 		void initWindow();
+		void initStates();
 
 	public:
 		/* Constructor / Destructor */
@@ -52,7 +52,7 @@ class Game {
 		float deltaTime;
 
 		// State management
-		std::stack<State*> state;
+		std::stack<State*> states;
 
 };
 

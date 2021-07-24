@@ -1,11 +1,13 @@
 #include "../../include/States/GameState.hpp"
 
 /* Construct / Destructor */
-GameState::GameState() {}
+GameState::GameState(sf::RenderWindow* window) : State(window) {}
 
 GameState::~GameState() {}
 
 /* Functions */
-void GameState::update() {}
+void GameState::endState() {}
 
-void GameState::render() {}
+void GameState::update(const float deltaTime) {}
+
+void GameState::render(sf::RenderTarget* target) {}
