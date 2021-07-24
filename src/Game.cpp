@@ -103,7 +103,7 @@ void Game::update() {
 
 void Game::render() {
 	// Clear the screen with a color
-	this->WINDOW->clear(sf::Color(51, 51, 51, 100));
+	this->WINDOW->clear();
 
 	// Call the render function for the top state in the states stack
 	if (this->states.empty() == false) {
