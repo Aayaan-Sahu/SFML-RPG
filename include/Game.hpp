@@ -7,9 +7,11 @@
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 
-#define BASE_WIDTH 		800
-#define BASE_HEIGHT 	600
-#define BASE_TITLE 		"Explorer"
+#define BASE_WIDTH 					800
+#define BASE_HEIGHT 				600
+#define BASE_FRAME_RATE_LIMIT 		120
+#define BASE_VERTICAL_SYNC_ENABLED 	false
+#define BASE_TITLE 					"Explorer"
 
 class Game {
 
@@ -36,9 +38,11 @@ class Game {
 		sf::Event event;
 
 		// Window Variables
-		int WIDTH 			= BASE_WIDTH;
-		int HEIGHT 			= BASE_HEIGHT;
-		std::string TITLE 	= BASE_TITLE;
+		int WIDTH 						= BASE_WIDTH;
+		int HEIGHT 						= BASE_HEIGHT;
+		int FRAME_RATE_LIMIT 			= BASE_FRAME_RATE_LIMIT;
+		bool VERTICAL_SYNC_ENABLED 		= BASE_VERTICAL_SYNC_ENABLED;
+		std::string TITLE 				= BASE_TITLE;
 
 		// Delta time
 		sf::Clock deltaTimeClock;
