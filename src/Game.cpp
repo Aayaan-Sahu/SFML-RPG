@@ -27,18 +27,21 @@ void Game::initVariables() {
 	std::string stringFrameRateLimit;
 	std::string stringVerticalSyncEnabled;
 
+	// Get each of the lines into its own variable
 	std::getline(fin, title);
 	std::getline(fin, stringWidth);
 	std::getline(fin, stringHeight);
 	std::getline(fin, stringFrameRateLimit);
 	std::getline(fin, stringVerticalSyncEnabled);
 
+	// Trim each of the lines to only include the values
 	this->TITLE = title.substr(title.find("=") + 1);
 	stringWidth = stringWidth.substr(stringWidth.find("=") + 1);
 	stringHeight = stringHeight.substr(stringHeight.find("=") + 1);
 	stringFrameRateLimit = stringFrameRateLimit.substr(stringFrameRateLimit.find("=") + 1);
 	stringVerticalSyncEnabled = stringVerticalSyncEnabled.substr(stringVerticalSyncEnabled.find("=") + 1);
 
+	// Perform necessary conversions from string to correct data type
 	this->WIDTH = std::stoi(stringWidth);
 	this->HEIGHT = std::stoi(stringHeight);
 	this->FRAME_RATE_LIMIT = std::stoi(stringFrameRateLimit);
