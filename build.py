@@ -89,7 +89,6 @@ def link():
 def main():
     if len(sys.argv) == 1:
         print('\033[1m{}\033[0m'.format('Compiling and linking...\n'))
-        # print("Compiling and linking...\n")
         compile()
         link()
     else:
