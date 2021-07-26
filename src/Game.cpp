@@ -101,6 +101,13 @@ void Game::update() {
 	// Call the update function for the top state in the states stack
 	if (this->states.empty() == false) {
 		this->states.top()->update(this->deltaTime);
+
+		// Deleting a state
+		if (this->states.top()->getQuit()) {
+			this->states.top()->endState();
+			delete this->states.top();
+			this->states.pop();
+		}
 	}
 }
 

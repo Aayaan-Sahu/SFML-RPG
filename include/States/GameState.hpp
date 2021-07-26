@@ -14,7 +14,8 @@ class GameState : public State {
 
 		/* Functions */
 		void endState();
-		void update(const float deltaTime);
+		void updateKeybinds(const float& deltaTime);
+		void update(const float& deltaTime);
 		void render(sf::RenderTarget* target=nullptr);
 
 	private:
