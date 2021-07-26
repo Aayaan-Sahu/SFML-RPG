@@ -108,7 +108,11 @@ void Game::update() {
 			delete this->states.top();
 			this->states.pop();
 		}
+	} else {
+		// Application end
+		this->WINDOW->close();
 	}
+	
 }
 
 void Game::render() {
