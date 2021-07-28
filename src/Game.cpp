@@ -79,6 +79,10 @@ Game::~Game() {
 }
 
 /* Functions */
+void Game::endApplication() {
+	std::cout << "Ending Application!\n";
+}
+
 void Game::updateDeltaTime() {
 	// Updates delta time with the time it takes from one frame to the next
 	this->deltaTime = this->deltaTimeClock.restart().asSeconds();
@@ -110,6 +114,7 @@ void Game::update() {
 		}
 	} else {
 		// Application end
+		this->endApplication();
 		this->WINDOW->close();
 	}
 	
