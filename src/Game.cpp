@@ -1,6 +1,7 @@
 #include "../include/Game.hpp"
 
 #include "../include/States/GameState.hpp"
+#include "../include/States/MainMenuState.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -64,6 +65,7 @@ void Game::initKeys() {
 }
 
 void Game::initStates() {
+	this->states.push(new MainMenuState(this->WINDOW, &this->supportedKeys));
 	this->states.push(new GameState(this->WINDOW, &this->supportedKeys));
 }
 
