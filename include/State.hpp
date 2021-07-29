@@ -16,16 +16,12 @@ class State {
 	private:
 
 	protected:
-		/* Variables */
-		sf::RenderWindow* window;
-		std::vector<sf::Texture*> textures;
-
-		// Quitting
-		bool quit;
+		/* Initializer Functions */
+		virtual void initKeybinds() = 0;
 
 	public:
 		/* Constructor / Destructor */
-		State(sf::RenderWindow* window);
+		State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
 		virtual ~State();
 
 		/* Functions */
@@ -34,9 +30,21 @@ class State {
 		virtual void checkForQuit();
 
 		virtual void endState() = 0;
-		virtual void updateKeybinds(const float& deltaTime) = 0;
+		virtual void updateInput(const float& deltaTime) = 0;
 		virtual void update(const float& deltaTime) = 0;
 		virtual void render(sf::RenderTarget* target=nullptr) = 0;
+
+	protected:
+		/* Variables */
+		sf::RenderWindow* window;
+		std::map<std::string, int>* supportedKeys;
+		std::map<std::string, int> keybinds;
+
+		// Resources
+		std::vector<sf::Texture*> textures;
+
+		// Quitting
+		bool quit;
 
 	private:
 

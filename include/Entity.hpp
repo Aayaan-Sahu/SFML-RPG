@@ -11,10 +11,6 @@ class Entity {
 
 	private:
 
-	protected:
-		sf::RectangleShape shape;
-		float movementSpeed;
-
 	public:
 		/* Constructor / Destructor */
 		Entity();
@@ -24,6 +20,10 @@ class Entity {
 		virtual void move(const float& deltaTime, const float dirx, const float diry);
 		virtual void update(const float& deltaTime);
 		virtual void render(sf::RenderTarget* target);
+
+	protected:
+		sf::RectangleShape shape;
+		float movementSpeed;
 
 	private:
 

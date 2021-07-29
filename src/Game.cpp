@@ -50,8 +50,17 @@ void Game::initVariables() {
 	fin.close();
 }
 
+void Game::initKeys() {
+	// Add keys with a string to reference them by
+	this->supportedKeys["ESC"] = sf::Keyboard::Key::Escape;
+	this->supportedKeys["A"] = sf::Keyboard::Key::A;
+	this->supportedKeys["D"] = sf::Keyboard::Key::D;
+	this->supportedKeys["W"] = sf::Keyboard::Key::W;
+	this->supportedKeys["S"] = sf::Keyboard::Key::S;
+}
+
 void Game::initStates() {
-	this->states.push(new GameState(this->WINDOW));
+	this->states.push(new GameState(this->WINDOW, &this->supportedKeys));
 }
 
 /* Constructor / Destructor */
@@ -61,6 +70,9 @@ Game::Game() {
 
 	// Initialize window
 	this->initWindow();
+
+	// Initialize keybinds
+	this->initKeys();
 
 	// Initialize states
 	this->initStates();

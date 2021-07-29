@@ -21,6 +21,7 @@ class Game {
 		/* Initializer Functions */
 		void initVariables();
 		void initWindow();
+		void initKeys();
 		void initStates();
 
 	public:
@@ -54,6 +55,9 @@ class Game {
 
 		// State management
 		std::stack<State*> states;
+
+		// Keybind Management
+		std::map<std::string, int> supportedKeys;
 
 };
 
