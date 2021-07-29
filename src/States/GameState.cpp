@@ -1,15 +1,20 @@
 #include "../../include/States/GameState.hpp"
 
+#include <fstream>
 #include <iostream>
 
 /* Initializer Functions */
 void GameState::initKeybinds() {
 	// Give each of the supported keys a function (how they will be used in the current state)
-	this->keybinds["CLOSE"] = this->supportedKeys->at("ESC");
-	this->keybinds["MOVE_LEFT"] = this->supportedKeys->at("A");
-	this->keybinds["MOVE_RIGHT"] = this->supportedKeys->at("D");
-	this->keybinds["MOVE_UP"] = this->supportedKeys->at("W");
-	this->keybinds["MOVE_DOWN"] = this->supportedKeys->at("S");
+	std::ifstream fin( "config/GameStateKeybinds.conf" );
+	if (fin.is_open()) {
+		std::string key = "";
+		std::string keyValue = "";
+		while (fin >> key >> keyValue) {
+			this->keybinds[key] = this->supportedKeys->at(keyValue);
+		}
+	}
+	fin.close();
 }
 
 /* Constructor / Destructor */

@@ -52,11 +52,15 @@ void Game::initVariables() {
 
 void Game::initKeys() {
 	// Add keys with a string to reference them by
-	this->supportedKeys["ESC"] = sf::Keyboard::Key::Escape;
-	this->supportedKeys["A"] = sf::Keyboard::Key::A;
-	this->supportedKeys["D"] = sf::Keyboard::Key::D;
-	this->supportedKeys["W"] = sf::Keyboard::Key::W;
-	this->supportedKeys["S"] = sf::Keyboard::Key::S;
+	std::ifstream fin( "config/SupportedKeys.conf" );
+	if (fin.is_open()) {
+		std::string key = "";
+		int keyValue = 0;
+		while (fin >> key >> keyValue) {
+			this->supportedKeys[key] = keyValue;
+		}
+	}
+	fin.close();
 }
 
 void Game::initStates() {
