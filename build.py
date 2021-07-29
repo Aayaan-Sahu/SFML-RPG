@@ -33,7 +33,8 @@ files = {
     "main"      : build_directory([SRC, "main.cpp"]),
     "Game"      : build_directory([SRC, "Game.cpp"]),
     "State"     : build_directory([SRC, "State.cpp"]),
-    "GameState" : build_directory([SRC, "States", "GameState.cpp"])
+    "Entity"    : build_directory([SRC, "Entity.cpp"]),
+    "GameState" : build_directory([SRC, "States", "GameState.cpp"]),
 
 }
 

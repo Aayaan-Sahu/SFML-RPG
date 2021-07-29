@@ -14,6 +14,8 @@
 class State {
 
 	private:
+
+	protected:
 		/* Variables */
 		sf::RenderWindow* window;
 		std::vector<sf::Texture*> textures;

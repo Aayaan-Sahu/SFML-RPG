@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-/* Construct / Destructor */
+/* Constructor / Destructor */
 GameState::GameState(sf::RenderWindow* window) : State(window) {}
 
 GameState::~GameState() {}
@@ -19,6 +19,10 @@ void GameState::updateKeybinds(const float& deltaTime) {
 
 void GameState::update(const float& deltaTime) {
 	this->updateKeybinds(deltaTime);
+
+	this->player.update(deltaTime);
 }
 
-void GameState::render(sf::RenderTarget* target) {}
+void GameState::render(sf::RenderTarget* target) {
+	this->player.render(target);
+}

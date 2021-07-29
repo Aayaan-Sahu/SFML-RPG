@@ -2,13 +2,15 @@
 #define _GAME_STATE_HPP
 
 #include "../State.hpp"
+#include "../Entity.hpp"
 
 class GameState : public State {
 
 	private:
+		Entity player;
 
 	public:
-		/* Construct / Destructor */
+		/* Constructor / Destructor */
 		GameState(sf::RenderWindow* window);
 		~GameState();
 
