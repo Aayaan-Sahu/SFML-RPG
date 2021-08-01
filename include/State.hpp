@@ -28,6 +28,7 @@ class State {
 		const bool& getQuit() const;
 
 		virtual void checkForQuit();
+		virtual void updateMousePositions();
 
 		virtual void endState() = 0;
 		virtual void updateInput(const float& deltaTime) = 0;
@@ -45,6 +46,11 @@ class State {
 
 		// Quitting
 		bool quit;
+
+		// Mouse input
+		sf::Vector2i mousePosScreen;
+		sf::Vector2i mousePosWindow;
+		sf::Vector2f mousePosView;
 
 	private:
 

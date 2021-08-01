@@ -30,6 +30,9 @@ void GameState::endState() {
 }
 
 void GameState::updateInput(const float& deltaTime) {
+	// Update mouse positions
+	this->updateMousePositions();
+
 	// Defined in State class
 	this->checkForQuit();
 

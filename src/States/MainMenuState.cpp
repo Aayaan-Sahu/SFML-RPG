@@ -4,6 +4,12 @@
 #include <iostream>
 
 /* Initializer Functions */
+void MainMenuState::initFonts() {
+	if (!this->font.loadFromFile("fonts/Dosis-Light.ttf")) {
+		throw("ERROR::MAINMENUSTATE::COULD_NOT_LOAD_FONT");
+	}
+}
+
 void MainMenuState::initKeybinds() {
 	// Give each of the supported keys a function (how they will be used in the current state)
 	std::ifstream fin( "config/MainMenuStateKeybinds.conf" );
@@ -19,6 +25,7 @@ void MainMenuState::initKeybinds() {
 
 /* Constructor / Destructor */
 MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys) : State(window, supportedKeys) {
+	this->initFonts();
 	this->initKeybinds();
 
 	this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
@@ -33,6 +40,9 @@ void MainMenuState::endState() {
 }
 
 void MainMenuState::updateInput(const float& deltaTime) {
+	// Update mouse positions
+	this->updateMousePositions();
+
 	// Defined in State class
 	this->checkForQuit();
 }

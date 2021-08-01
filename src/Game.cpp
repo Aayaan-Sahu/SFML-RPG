@@ -66,7 +66,6 @@ void Game::initKeys() {
 
 void Game::initStates() {
 	this->states.push(new MainMenuState(this->WINDOW, &this->supportedKeys));
-	this->states.push(new GameState(this->WINDOW, &this->supportedKeys));
 }
 
 /* Constructor / Destructor */

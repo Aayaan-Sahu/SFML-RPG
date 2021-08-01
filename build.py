@@ -31,11 +31,16 @@ def build_directory(parts):
 files = {
 
     "main"          : build_directory([SRC, "main.cpp"]),
+
     "Game"          : build_directory([SRC, "Game.cpp"]),
+
     "State"         : build_directory([SRC, "State.cpp"]),
-    "Entity"        : build_directory([SRC, "Entity.cpp"]),
     "GameState"     : build_directory([SRC, "States", "GameState.cpp"]),
-    "MainMenuState" : build_directory([SRC, "States", "MainMenuState.cpp"])
+    "MainMenuState" : build_directory([SRC, "States", "MainMenuState.cpp"]),
+
+    "Entity"        : build_directory([SRC, "Entity.cpp"]),
+
+    "Button"        : build_directory([SRC, "Button.cpp"]),
 
 }
 
