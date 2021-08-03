@@ -28,11 +28,20 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int
 	this->initFonts();
 	this->initKeybinds();
 
+	this->gameStateBtn = new Button(
+		100, 100,
+		150, 50,
+		&this->font, "New Game",
+		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200)
+	);
+
 	this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
 	this->background.setFillColor(sf::Color::Magenta);
 }
 
-MainMenuState::~MainMenuState() {}
+MainMenuState::~MainMenuState() {
+	delete this->gameStateBtn;
+}
 
 /* Functions */
 void MainMenuState::endState() {
@@ -49,6 +58,8 @@ void MainMenuState::updateInput(const float& deltaTime) {
 
 void MainMenuState::update(const float& deltaTime) {
 	this->updateInput(deltaTime);
+
+	this->gameStateBtn->update(this->mousePosView);
 }
 
 void MainMenuState::render(sf::RenderTarget* target) {
@@ -58,4 +69,6 @@ void MainMenuState::render(sf::RenderTarget* target) {
 	}
 
 	target->draw(this->background);
+
+	this->gameStateBtn->render(target);
 }

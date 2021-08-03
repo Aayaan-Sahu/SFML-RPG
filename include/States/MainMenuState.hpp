@@ -27,6 +27,8 @@ class MainMenuState : public State {
 		sf::RectangleShape background;
 		sf::Font font;
 
+		Button* gameStateBtn;
+
 };
 
 #endif
