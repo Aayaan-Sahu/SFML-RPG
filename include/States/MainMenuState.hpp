@@ -4,12 +4,15 @@
 #include "../State.hpp"
 #include "../Button.hpp"
 
+#include <map>
+
 class MainMenuState : public State {
 
 	private:
 		/* Initializer Functions */
 		void initFonts();
 		void initKeybinds();
+		void initButtons();
 
 	public:
 		/* Constructor / Destructor */
@@ -19,7 +22,9 @@ class MainMenuState : public State {
 		/* Functions */
 		void endState();
 		void updateInput(const float& deltaTime);
+		void updateButtons();
 		void update(const float& deltaTime);
+		void renderButtons(sf::RenderTarget* target=nullptr);
 		void render(sf::RenderTarget* target=nullptr);
 
 	private:
@@ -27,7 +32,7 @@ class MainMenuState : public State {
 		sf::RectangleShape background;
 		sf::Font font;
 
-		Button* gameStateBtn;
+		std::map<std::string, Button*> buttons;
 
 };
 

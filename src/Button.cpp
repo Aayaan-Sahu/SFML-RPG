@@ -19,7 +19,7 @@ Button::Button(
 	this->text.setFont(*this->font);
 	this->text.setString(text);
 	this->text.setFillColor(sf::Color::White);
-	this->text.setCharacterSize(18);
+	this->text.setCharacterSize(16);
 
 	// Text position properties
 	this->text.setPosition(

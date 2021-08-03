@@ -23,24 +23,36 @@ void MainMenuState::initKeybinds() {
 	fin.close();
 }
 
-/* Constructor / Destructor */
-MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys) : State(window, supportedKeys) {
-	this->initFonts();
-	this->initKeybinds();
-
-	this->gameStateBtn = new Button(
+void MainMenuState::initButtons() {
+	this->buttons["GAME_STATE"] = new Button(
 		100, 100,
 		150, 50,
 		&this->font, "New Game",
 		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200)
 	);
 
+	this->buttons["EXIT_STATE"] = new Button(
+		100, 300,
+		150, 50,
+		&this->font, "Quit",
+		sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 200)
+	);
+}
+
+/* Constructor / Destructor */
+MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys) : State(window, supportedKeys) {
+	this->initFonts();
+	this->initKeybinds();
+	this->initButtons();
+
 	this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
 	this->background.setFillColor(sf::Color::Magenta);
 }
 
 MainMenuState::~MainMenuState() {
-	delete this->gameStateBtn;
+	for (auto button : buttons) {
+		delete button.second;
+	}
 }
 
 /* Functions */
@@ -56,10 +68,31 @@ void MainMenuState::updateInput(const float& deltaTime) {
 	this->checkForQuit();
 }
 
+void MainMenuState::updateButtons() {
+	for (const auto& button : this->buttons) {
+		button.second->update(this->mousePosView);
+	}
+
+	// New game
+	if (this->buttons["GAME_STATE"]->isPressed() == true) {
+		std::cout << "New Game!\n";
+	}
+
+	// Quit the state
+	if (this->buttons["EXIT_STATE"]->isPressed() == true) {
+		this->quit = true;
+	}
+}
+
 void MainMenuState::update(const float& deltaTime) {
 	this->updateInput(deltaTime);
+	this->updateButtons();
+}
 
-	this->gameStateBtn->update(this->mousePosView);
+void MainMenuState::renderButtons(sf::RenderTarget* target) {
+	for (const auto& button : this->buttons) {
+		button.second->render(target);
+	}
 }
 
 void MainMenuState::render(sf::RenderTarget* target) {
@@ -69,6 +102,5 @@ void MainMenuState::render(sf::RenderTarget* target) {
 	}
 
 	target->draw(this->background);
-
-	this->gameStateBtn->render(target);
+	this->renderButtons(target);
 }
