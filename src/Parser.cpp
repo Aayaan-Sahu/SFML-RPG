@@ -15,6 +15,7 @@ bool Splitter::present(char c) {
 Splitter::Splitter(std::string buffer) {
 	this->parts.push_back( "" );
 	this->delimiters.push_back( '\n' );
+	this->delimiters.push_back( '\t' );
 	this->delimiters.push_back( ' ' );
 	this->delimiters.push_back( '=' );
 	this->buffer = buffer;

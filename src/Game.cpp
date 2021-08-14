@@ -23,7 +23,7 @@ void Game::initWindow() {
 void Game::initVariables() {
 	/* Read Window Properties */
 	Parser parser("config/WindowProperties.conf");
-	this->TITLE = parser["TITLE"];
+	this->TITLE = parserUtilities::convertUnderscoresToWhitespaces(parser["TITLE"]);
 	this->WIDTH = std::stoi(parser["WIDTH"]);
 	this->HEIGHT = std::stoi(parser["HEIGHT"]);
 	this->FRAME_RATE_LIMIT = std::stoi(parser["FRAME_RATE_LIMIT"]);
