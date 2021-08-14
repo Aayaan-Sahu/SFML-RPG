@@ -22,3 +22,5 @@
 
 ## If you don't want to build
 * Just run `bin/Application`
+
+### This is a personal project, pull requests will be ignored lol
