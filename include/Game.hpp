@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "./State.hpp"
+#include "./Defines.hpp"
 
 #define BASE_WIDTH 					800
 #define BASE_HEIGHT 				600

@@ -1,5 +1,7 @@
 #include "../include/Game.hpp"
 
+#include "../include/Parser.hpp"
+
 #include "../include/States/GameState.hpp"
 #include "../include/States/MainMenuState.hpp"
 
@@ -20,35 +22,12 @@ void Game::initWindow() {
 
 void Game::initVariables() {
 	/* Read Window Properties */
-	std::ifstream fin( "Config/WindowProperties.conf" );
-
-	std::string title;
-	std::string stringWidth;
-	std::string stringHeight;
-	std::string stringFrameRateLimit;
-	std::string stringVerticalSyncEnabled;
-
-	// Get each of the lines into its own variable
-	std::getline(fin, title);
-	std::getline(fin, stringWidth);
-	std::getline(fin, stringHeight);
-	std::getline(fin, stringFrameRateLimit);
-	std::getline(fin, stringVerticalSyncEnabled);
-
-	// Trim each of the lines to only include the values
-	this->TITLE = title.substr(title.find("=") + 1);
-	stringWidth = stringWidth.substr(stringWidth.find("=") + 1);
-	stringHeight = stringHeight.substr(stringHeight.find("=") + 1);
-	stringFrameRateLimit = stringFrameRateLimit.substr(stringFrameRateLimit.find("=") + 1);
-	stringVerticalSyncEnabled = stringVerticalSyncEnabled.substr(stringVerticalSyncEnabled.find("=") + 1);
-
-	// Perform necessary conversions from string to correct data type
-	this->WIDTH = std::stoi(stringWidth);
-	this->HEIGHT = std::stoi(stringHeight);
-	this->FRAME_RATE_LIMIT = std::stoi(stringFrameRateLimit);
-	this->VERTICAL_SYNC_ENABLED = (stringVerticalSyncEnabled == "1") ? true : false;
-
-	fin.close();
+	Parser parser("config/WindowProperties.conf");
+	this->TITLE = parser["TITLE"];
+	this->WIDTH = std::stoi(parser["WIDTH"]);
+	this->HEIGHT = std::stoi(parser["HEIGHT"]);
+	this->FRAME_RATE_LIMIT = std::stoi(parser["FRAME_RATE_LIMIT"]);
+	this->VERTICAL_SYNC_ENABLED = (parser["VERTICAL_SYNC_ENABLED"] == "1") ? true : false;
 }
 
 void Game::initKeys() {
