@@ -42,6 +42,8 @@ files = {
 
     "Button"        : build_directory([SRC, "Button.cpp"]),
 
+    "Parser"        : build_directory([SRC, "Parser.cpp"]),
+
 }
 
 
