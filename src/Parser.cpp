@@ -9,15 +9,21 @@ namespace parserUtilities {
 }
 
 bool Splitter::present(char c) {
+	// Using std::find defined in <algorithm> to find if an element `c` is present within a container
 	return (std::find(this->delimiters.begin(), this->delimiters.end(), c) != this->delimiters.end());
 }
 
 Splitter::Splitter(std::string buffer) {
+	// Initialize this->parts to make the algorithm used work
 	this->parts.push_back( "" );
+
+	// Set of pre-defined delimiters to make the parsing work
 	this->delimiters.push_back( '\n' );
 	this->delimiters.push_back( '\t' );
 	this->delimiters.push_back( ' ' );
 	this->delimiters.push_back( '=' );
+
+	// Set the buffer to read from to buffer
 	this->buffer = buffer;
 }
 
@@ -25,6 +31,10 @@ void Splitter::split() {
 	/* Read */
 	std::ifstream fin(this->buffer);
 	char c;
+
+	// Read every character
+	// If the character is a delimiter, add a new part
+	// Else, add the character to the string at the back of this->parts
 	while (fin >> std::noskipws >> c) {
 		if (this->present(c)) {
 			if (this->parts.back() != "") {
@@ -52,6 +62,7 @@ Lexer::Lexer(std::vector<std::string> parts) {
 
 void Lexer::lex() {
 	while (this->parts.empty() == false) {
+		// Put every pair of elements in this->links
 		this->links[this->parts[0]] = this->parts[1];
 		this->parts.erase(this->parts.begin());
 		this->parts.erase(this->parts.begin());
@@ -63,6 +74,7 @@ std::string Lexer::operator[](std::string key) {
 }
 
 Parser::Parser(std::string buffer) {
+	// Simple API to put everything together
 	this->s = new Splitter(buffer);
 	this->s->split();
 

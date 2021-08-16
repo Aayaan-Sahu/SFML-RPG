@@ -8,6 +8,7 @@
 #include <algorithm>
 
 namespace parserUtilities {
+	/* For the game's use case: to get a title that contains spaces */
 	std::string convertUnderscoresToWhitespaces(std::string s);
 }
 
